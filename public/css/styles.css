@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 1em !important;
+    background: var(--background-color);
+    color: var(--color)
+}
+
+input {
+    color: black
+}
+
+.row-container {
+    margin-bottom: 1em;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-spacer {
+    margin-left: auto;
+}
+
+.btn.down::after {
+    content: "▼"
+}
+
+.btn.up::after {
+    content: "▲"
+}
+
+.action-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.action-container .btn {
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.action-container .btn-sort {
+    width: 80%;
+}
+
+.action-container .btn-filter {
+    margin-left: 20%;
+    width: 80%;
+}
+
+
+.todo-container {
+    display: grid;
+    grid-gap: 1em;
+    padding: 1em 0;
+    border-bottom: 1px var(--border-color) solid;
+    grid-template-columns: 150px 1fr;
+    grid-template-areas:
+            "due-date title"
+            "finished desc"
+            "actions actions";
+}
+
+.todo-due {
+    grid-area: due-date;
+}
+
+.todo-title {
+    grid-area: title;
+}
+
+.todo-action {
+    grid-area: actions;
+    align-self: center;
+}
+
+.todo-action > * {
+    width: 100%;
+}
+
+.todo-finished {
+    grid-area: finished;
+}
+
+
+.todo-desc {
+    grid-area: desc;
+}
+
+.todo-desc {
+    grid-area: desc;
+}
+
+
+@media screen and (min-width: 640px) {
+    .action-container .btn {
+        width: auto;
+    }
+
+    .action-container .btn:not(:last-child) {
+        margin-right: 0.5em;
+    }
+
+    .action-container .btn-sort {
+        width: auto;
+    }
+
+    .action-container .btn-filter {
+        width: auto;
+        margin-left: auto;
+    }
+
+
+    .todo-container {
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: "due-date title actions" "finished desc actions";
+    }
+}

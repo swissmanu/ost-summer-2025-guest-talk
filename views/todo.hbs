@@ -1,0 +1,31 @@
+<form method="post" action="/todo/{{todo._id}}">
+    <div class="mb-1">
+        <label for="inputTitle" class="form-label">Title</label>
+        <input type="text" class="form-control" id="inputTitle" aria-describedby="emailHelp" placeholder="Enter title"
+               name="title" value="{{todo.title}}" required>
+    </div>
+    <div class="mb-1">
+        <label for="inputImportance" class="form-label">Importance</label>
+        <input type="number" min="1" max="5" class="form-control" id="inputImportance" name="importance"
+               value="{{todo.importance}}">
+    </div>
+    <div class="mb-1">
+        <label for="inputDueDate" class="form-label">Due Date</label>
+        <input class="form-control" type="date" id="inputDueDate" name="dueDate" value="{{todo.dueDate}}">
+    </div>
+    <div class="mb-1">
+        <input type="checkbox" class="form-check-input" id="inputFinished" name="finished" value="selected"
+            {{? todo.finished 'checked' ''  }}>
+        <label class="form-check-label" for="inputFinished">Finished</label>
+    </div>
+    <div class="mb-2">
+        <label for="inputDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="inputDescription" rows="3" name="description">{{todo.description}}</textarea>
+    </div>
+    <div class="action-container">
+        <button type="submit" class="btn btn-primary">{{? todo._id 'Update' 'Create'}}</button>
+        <input type="submit" class="btn btn-primary" name="save_redirect"
+               value="{{? todo._id 'Update' 'Create'}} & Overview">
+        <a href="/" type="submit" class="btn btn-primary">Overview</a>
+    </div>
+</form>

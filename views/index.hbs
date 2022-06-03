@@ -1,0 +1,42 @@
+<div class="row-container flex-container ">
+    <a href="/todo" class="btn btn-primary">Create new todo</a>
+    <a href="?theme=toggle" class="btn btn-primary flex-spacer">Toggle Style</a>
+</div>
+
+<div class="action-container">
+    {{#each sort}}
+        {{#if current}}
+            <a href="/?orderBy={{key}}&orderDirection={{direction}}"
+            class="btn btn-primary btn-sort active {{eq direction '-1' 'up' 'down'}}">{{label}}</a>
+        {{else}}
+            <a href="/?orderBy={{key}}&orderDirection={{direction}}" class="btn btn-primary btn-sort">By {{label}} </a>
+        {{/if}}
+    {{/each}}
+    <a href="?filter=toggle" class="btn btn-primary flex-spacer btn-filter {{? filter 'active' ''}}">Filter
+        Completed</a>
+</div>
+
+<div class="row-container">
+    {{#each todos}}
+        <div class="todo-container">
+            <div class="todo-due">{{date dueDate}}</div>
+            <div class="todo-title flex-container">
+                <div>{{title}}</div>
+                <div class="flex-spacer">
+                    {{#times importance}}
+                        ↯
+                    {{/times}}
+                </div>
+            </div>
+
+            <div class="todo-action">
+                <a href="todo/{{_id}}" class="btn btn-primary">Edit</a>
+            </div>
+            <div class="todo-finished form-check">
+                <input class="form-check-input" type="checkbox" {{? finished 'checked' ''}} id="finished_{{_id}}" disabled>
+                <label class="form-check-label" for="finished_{{_id}}" for="">{{? finished 'Completed' 'Open'}} </label>
+            </div>
+            <div class="todo-desc">{{description}}</div>
+        </div>
+    {{/each}}
+</div>
