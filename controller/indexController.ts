@@ -33,13 +33,13 @@ export class IndexController {
             sort: sortingViewModel,
             filter: req.settings.filter
         });
-    };
+    }
 
     async add(req: Request, res: Response) {
         res.render("todo", {
             ...IndexController.defaultParams(req)
         });
-    };
+    }
 
     async handleAdd(req: Request, res: Response) {
         const {title, importance, dueDate, finished, description} = req.body;
@@ -50,7 +50,7 @@ export class IndexController {
         });
 
         IndexController.handleSave(req, res, todo);
-    };
+    }
 
     async update(req: Request, res: Response) {
         const todo = await todoService.get(req.params.id)
@@ -58,7 +58,7 @@ export class IndexController {
             ...IndexController.defaultParams(req),
             todo
         });
-    };
+    }
 
     async handleUpdate(req: Request, res: Response) {
         const {title, importance, dueDate, finished, description} = req.body;
@@ -72,7 +72,7 @@ export class IndexController {
         })
 
         IndexController.handleSave(req, res, todo);
-    };
+    }
 
 
     private static defaultParams(req: Request) {
