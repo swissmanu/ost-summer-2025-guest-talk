@@ -8,13 +8,13 @@ export interface Settings {
     theme: boolean
 }
 
-export const sessionUserSettings = (req: Request, res: Response, next: (err?: any) => void) => {
+export const sessionUserSettings = (req: Request, res: Response, next: (err?: unknown) => void) => {
     // default Wert oder aktueller Wert von der Session lesen
     const settings = req.session?.settings || {orderBy: 'title', orderDirection: -1, filter: false, theme: true};
     const {orderBy, orderDirection, filter, theme} = req.query;
 
     if (orderBy) {
-        settings.orderBy = orderBy as any;
+        settings.orderBy = orderBy as keyof Todo;
     }
     if (orderDirection) {
         settings.orderDirection = Number(orderDirection) > 0 ? 1 : -1;

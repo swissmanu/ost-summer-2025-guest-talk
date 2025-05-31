@@ -1,9 +1,9 @@
-import express, {Request, Response} from 'express';
 import bodyParser from 'body-parser';
-import path from 'path';
+import express from 'express';
 import session from 'express-session';
-import {indexRoutes} from './routes/indexRoutes';
-import {helpers} from './utils/handlebar-util'
+import path from 'path';
+import { indexRoutes } from './routes/indexRoutes';
+import { helpers } from './utils/handlebar-util';
 
 declare module 'express-session' {
     interface SessionData {
@@ -18,7 +18,7 @@ declare module 'express' {
 }
 
 import exphbs from 'express-handlebars';
-import {sessionUserSettings, Settings} from "./utils/session-middleware";
+import { sessionUserSettings, Settings } from "./utils/session-middleware";
 
 export const app = express();
 
