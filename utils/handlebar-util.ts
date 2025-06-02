@@ -7,10 +7,10 @@ export const helpers = {
         else
             return opts.inverse(this);
     },
-    '?': function (a, b, c, opts) {
+    '?': function (a, b, c) {
         return a ? b : c;
     },
-    'eq': function (a, b, c, d, opts) {
+    'eq': function (a, b, c, d) {
         return a == b ? c : d;
     },
     'times': function (n, block) {
@@ -19,7 +19,7 @@ export const helpers = {
             accum += block.fn(i);
         return accum;
     },
-    'date': function (a, opts) {
+    'date': function (a) {
         return a == undefined || a == "" ? "Someday" : moment(a).fromNow();
     }
 }

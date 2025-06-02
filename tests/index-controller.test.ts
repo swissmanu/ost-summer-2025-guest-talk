@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 chai.use(chaiHttp);
 chai.use(chaiDom);
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const should = chai.should();
 const expect = chai.expect;
 

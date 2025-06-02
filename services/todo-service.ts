@@ -1,5 +1,4 @@
 import Datastore from 'nedb-promises'
-import validate = WebAssembly.validate;
 
 export interface Todo {
     _id: string;
@@ -47,7 +46,7 @@ class TodoService {
     }
 
     async all(orderBy: { key: keyof Todo, direction: 1 | -1 } = {key: "creationDate", direction: -1},
-              filterBy?: { key: keyof Todo, value: any }) {
+              filterBy?: { key: keyof Todo, value: unknown }) {
         const filter = filterBy ? {[filterBy.key]: filterBy.value} : {}
         return await this.db.find(filter).sort({[orderBy.key]: orderBy.direction}).exec();
     }
