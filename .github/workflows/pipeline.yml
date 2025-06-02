@@ -43,3 +43,11 @@ jobs:
         with:
           browser: chrome
           start: npm start
+      - name: Provide Screenrecording as Artifact
+        uses: actions/upload-artifact@v4
+        if: ${{ success() || failure() }}
+        with:
+          retention-days: 10
+          name: cypress-screenrecording
+          path: |
+            cypress/videos/*.mp4
